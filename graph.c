@@ -28,13 +28,15 @@ char* return_graph_name (Graph *G) {
 
 
 int destroy_graph(Graph *G) {
-    Node *p;
+    if (G != NULL) { 
+        Node *p;
 
-    for(p = G -> start; p != NULL; p = p -> next) { //Wipes the list of nodes
-        remove_node(G, p -> id);
+        for(p = G -> start; p != NULL; p = p -> next) { //Wipes the list of nodes
+            remove_node(G, p -> id);
+        }
+
+        free(G);
     }
-
-    free(G);
 
     return SUCCEED; //Task completed
 }

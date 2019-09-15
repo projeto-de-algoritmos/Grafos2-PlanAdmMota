@@ -23,9 +23,9 @@ int main() {
 
         switch (option) {
             case 1:
-                printf("Coloque o id da pessoa: ");
+                printf("Coloque o id da esquina: ");
                 scanf("%d", &id);
-                printf("Coloque o nome da pessoa: ");
+                printf("Coloque o nome da esquina: ");
                 scanf("%s", name);
                 getchar();
                 add_node(grafo, id);
@@ -35,7 +35,7 @@ int main() {
             break;
 
             case 2:
-                printf("Digite o id das duas pessoa amigas: ");
+                printf("Digite o id das duas esquinas conectadas: ");
                 scanf("%d %d %d", &id, &conection, &weight);
                 insert_edge.weight = weight;
                 add_edge(grafo, id, conection);
@@ -45,23 +45,30 @@ int main() {
             break;
 
             case 3:
-                printf("Digite o id da pessoa que deseja retirar: ");
+                printf("Digite o id da esquina que deseja retirar: ");
                 scanf("%d", &id);
                 remove_node(grafo, id);
                 menu(grafo);
             break;
 
             case 4:
-                printf("Digite o id das duas pessoas que brigaram: ");
+                printf("Digite o id das duas esquinas que não são mais conectadas: ");
                 scanf("%d %d", &id, &conection);
                 remove_edge(grafo, id, conection);
                 remove_edge(grafo, conection, id);
             break;
 
             case 5:
-                printf("Digite o id que deseja ver sua Lista de Amigos: ");
+                printf("Digite o id que deseja ver suas conexões: ");
                 scanf("%d", &id);
-                invite(grafo, id);
+                conections(grafo, id);
+            break;
+
+            case 6:
+                printf("Digite a origem e destino do caminho desejado: ");
+                scanf("%d %d", &id, &conection);
+                conection = dijkstra(grafo, id, conection);
+                printf("%d\n", conection);
             break;
 
             case 0:

@@ -15,9 +15,18 @@ int catch_option();
 Show all options of program
 */
 
-void invite(Graph *, int);
+void conections(Graph *, int);
 /*
- * Creates the list of birthday of one node
+ * Creates the list of linked streets of one node
  */
 
+Graph* prim(Graph *);
+/*
+ * Creates the minimum tree
+ */
+
+int dijkstra(Graph *, int, int);
+/*
+ * Return the minimum cost to go from one point to another
+ */
 #endif //_INTERFACE_
