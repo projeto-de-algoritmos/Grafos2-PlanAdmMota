@@ -1,4 +1,4 @@
-# PlanRedesCebMota
+# PlanAdmMota
 
 **Número da Lista**: 2<br>
 **Conteúdo da Disciplina**: Grafos2<br>
@@ -17,7 +17,7 @@ Adicione 3 ou mais screenshots do projeto em funcionamento.
 
 ## Instalação 
 **Linguagem**: C<br>
-Necessário realizar o comando: gcc *.c *.h -o PlanRedesAdmMota
+Necessário realizar o comando: gcc *.c *.h -o PlanAdmMota
 
 ## Uso 
 Siga as instruções no menu.
