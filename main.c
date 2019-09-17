@@ -16,6 +16,7 @@ int main() {
     NodeData insert_node;
     EdgeData insert_edge;
     int conection;
+    int idBest,shorterTotalCost = 999,shorterActualCost;
     char option;
 
     do {
@@ -31,7 +32,6 @@ int main() {
                 add_node(grafo, id);
                 strcpy(insert_node.name, name);
                 set_node_value(grafo, id, insert_node);
-                menu(grafo);
             break;
 
             case 2:
@@ -48,7 +48,6 @@ int main() {
                 printf("Digite o id da esquina que deseja retirar: ");
                 scanf("%d", &id);
                 remove_node(grafo, id);
-                menu(grafo);
             break;
 
             case 4:
@@ -70,6 +69,21 @@ int main() {
                 conection = dijkstra(grafo, id, conection);
                 printf("%d\n", conection);
             break;
+            case 7:
+            for(int origin = 1;origin <= grafo->n_nodes;origin++){
+              shorterActualCost = 0;
+              for(int destiny = 1;destiny <= grafo->n_nodes;destiny++){
+                if(origin != destiny){
+                  shorterActualCost = shorterActualCost + dijkstra(grafo, origin, destiny);
+                }
+              }
+              if(shorterActualCost < shorterTotalCost){
+                idBest = origin;
+                shorterTotalCost = shorterActualCost;
+              }
+            }
+            printf("O melhor ponto pra se colocar a central na cidade e: %d\n",idBest);
+            break;
 
             case 0:
                 printf("Ate a proxima!\n\n");
@@ -79,6 +93,7 @@ int main() {
                 printf("DIGITE UMA OPCAO VALIDA\n\n");
             break;
         }
+         menu(grafo);
     } while (option != 0);
 
     destroy_graph(grafo);
