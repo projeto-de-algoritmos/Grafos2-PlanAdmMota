@@ -25,7 +25,7 @@ Graph* prim(Graph *);
  * Creates the minimum tree
  */
 
-int dijkstra(Graph *, int, int);
+int dijkstra(Graph *, int, int, int);
 /*
  * Return the minimum cost to go from one point to another
  */

@@ -4,7 +4,7 @@
 #define VISITED -1
 
 void menu(Graph *grafo) {
-	printf("\n\t\tCaminhando pela VP.\n");
+	printf("\n\t\tPosiciona administração.\n");
 	
 	Node * node;
 	for (node = grafo -> start; node != NULL; node = node -> next) {
@@ -18,7 +18,8 @@ void menu(Graph *grafo) {
 	printf("3- Retirar esquina.\n");
 	printf("4- Retirar rua.\n");
 	printf("5- Esquinas conectadas.\n");
-    printf("6- Menor caminho entre dois pontos\n");
+    printf("6- Menor caminho entre dois pontos.\n");
+    printf("7- Melhor local para se pôr uma administração.\n");
 	printf("0- Sair do programa.\n");
 
 	return;
@@ -63,7 +64,7 @@ Graph* prim(Graph *grafo) {
     return minimum_graph;
 }
 
-int dijkstra(Graph *grafo, int origin, int destiny) {
+int dijkstra(Graph *grafo, int origin, int destiny, int print) {
 
     int size_graph = (grafo -> n_nodes) + 1;
 
@@ -83,12 +84,14 @@ int dijkstra(Graph *grafo, int origin, int destiny) {
 
     int id_min, min;
     do {
-        // Print the list of minimum path until now
-        printf("Calculo dos menores valores atualizado\n");
-        for (int i = 1; i < size_graph; i++) {
-            printf("%d: %d\n", i, minimum_cost_to[i]);
+        if (print) {
+            // Print the list of minimum path until now
+            printf("Calculo dos menores valores atualizado\n");
+            for (int i = 1; i < size_graph; i++) {
+                printf("%d: %d\n", i, minimum_cost_to[i]);
+            }
+            printf("\n");
         }
-        printf("\n");
 
         id_min = INFINITO;
         min = INFINITO;
@@ -99,23 +102,29 @@ int dijkstra(Graph *grafo, int origin, int destiny) {
                 id_min = i;
             }
         }
-        printf("Menor caminho ate agora: %d\n", id_min);
 
         int *neighbor = neighbors(grafo, id_min);
         int cost = 0;
 
+        if (print) {
+            printf("Menor caminho ate agora: %d\n", id_min);
+            printf("Custo atual ate %d: %d\n", id_min, minimum_cost_to[id_min]);
+        }
         // att cost to edges if smaller
-        printf("Custo atual ate %d: %d\n", id_min, minimum_cost_to[id_min]);
         for (int i = 1; i <= neighbor[0]; i++) {
             if (visited[neighbor[i]] == 0) {
                 cost = minimum_cost_to[id_min] + return_edge_value(grafo, id_min, neighbor[i]).weight;
-                printf("Velho custo ate %d: %d\n",neighbor[i], minimum_cost_to[neighbor[i]]);
-                printf("Custo ate %d passando por %d: %d\n", neighbor[i], id_min, cost);
+                if (print) {
+                    printf("Velho custo ate %d: %d\n",neighbor[i], minimum_cost_to[neighbor[i]]);
+                    printf("Custo ate %d passando por %d: %d\n", neighbor[i], id_min, cost);
+                }
                 if (cost < minimum_cost_to[neighbor[i]]) {
                     minimum_cost_to[neighbor[i]] = cost;
                 }
-                printf("Custo atualizado para %d: %d\n", neighbor[i], minimum_cost_to[neighbor[i]]);
-                printf("\n");
+                if (print) {
+                    printf("Custo atualizado para %d: %d\n", neighbor[i], minimum_cost_to[neighbor[i]]);
+                    printf("\n");
+                }                
             }
         }
 

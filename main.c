@@ -66,23 +66,24 @@ int main() {
             case 6:
                 printf("Digite a origem e destino do caminho desejado: ");
                 scanf("%d %d", &id, &conection);
-                conection = dijkstra(grafo, id, conection);
+                conection = dijkstra(grafo, id, conection, 1);
                 printf("%d\n", conection);
             break;
+
             case 7:
-            for(int origin = 1;origin <= grafo->n_nodes;origin++){
-              shorterActualCost = 0;
-              for(int destiny = 1;destiny <= grafo->n_nodes;destiny++){
-                if(origin != destiny){
-                  shorterActualCost = shorterActualCost + dijkstra(grafo, origin, destiny);
+                for(int origin = 1; origin <= grafo -> n_nodes; origin++) {
+                    shorterActualCost = 0;
+                    for(int destiny = 1; destiny <= grafo -> n_nodes; destiny++) {
+                        if(origin != destiny) {
+                            shorterActualCost = shorterActualCost + dijkstra(grafo, origin, destiny, 0);
+                        }
+                    }
+                    if(shorterActualCost < shorterTotalCost){
+                        idBest = origin;
+                        shorterTotalCost = shorterActualCost;
+                    }
                 }
-              }
-              if(shorterActualCost < shorterTotalCost){
-                idBest = origin;
-                shorterTotalCost = shorterActualCost;
-              }
-            }
-            printf("O melhor ponto pra se colocar a central na cidade e: %d\n",idBest);
+                printf("O melhor ponto pra se colocar a central na cidade e: %d\n",idBest);
             break;
 
             case 0:
