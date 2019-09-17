@@ -10,17 +10,17 @@
 | 16/0016428  |  Paulo Victor Lopes |
 
 ## Sobre 
-O nosso projeto consiste no planejamento de uma rede com uma central. Tendo o mapa de uma cidade em formato de grafo, o nosso projeto visa promover tanto o planejamento de por onde serão passados os cabos como da melhor localização para a central da rede a partir dos algoritmos do Prim para a árvore geradora mínima e do Dijkstra para a melhor posição.
+O nosso projeto consiste no planejamento do melhor local para se colocar a administração( ou um hospital, delegacia, etc) que tenha a menor distância geral para qualquer ponto de Vicente Pires. Tendo o mapa de Vicente Pires em formato de grafo, o nosso projeto visa promover esse planejamento da melhor localização para a central a partir do algoritmo de Dijkstra para caminho mais curto.
 
 ## Screenshots
 Adicione 3 ou mais screenshots do projeto em funcionamento.
 
 ## Instalação 
 **Linguagem**: C<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+Necessário realizar o comando: gcc *.c *.h -o PlanRedesAdmMota
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+Siga as instruções no menu.
 
 ## Outros 
 Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
